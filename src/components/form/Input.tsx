@@ -37,7 +37,7 @@ export default function Input ({
   }
 
   return (
-    <label className="block bg-[#EDEDED] hover:bg-gray-200 transition-all rounded relative flex focus-within:bg-white focus-within:ring-2 focus-within:ring-black">
+    <label className="block bg-[#EDEDED] hover:bg-gray-200 focus-within:hover:bg-white transition-all rounded relative flex focus-within:bg-white focus-within:ring-2 focus-within:ring-black">
       <input
         ref={inputRef}
         className="peer pt-5 pb-2 px-2 bg-transparent focus:outline-none w-full font-semibold"
