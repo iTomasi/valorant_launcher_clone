@@ -1,0 +1,1 @@
+export const MIN_WIDTH_REQUIRED = 1024

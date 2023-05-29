@@ -17,8 +17,9 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": "./src"
   },
-  "include": ["src", "./tailwind.config.ts", "./postcss.config.js"],
+  "include": ["src", "./tailwind.config.ts", "./postcss.config.js", "./vite.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
