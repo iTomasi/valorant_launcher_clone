@@ -12,6 +12,7 @@ export default function CheckBox ({
   return (
     <label className={`flex items-center gap-1.5 ${className}`}>
       <input
+        className="accent-[#bc252a] w-4 h-4"
         type="checkbox"
         name={name}
       />

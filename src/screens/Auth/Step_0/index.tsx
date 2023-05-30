@@ -20,7 +20,7 @@ export default function Step0 () {
             src="/logo.png"
           />
 
-          <h1 className="text-2xl text-center font-semibold mb-7">Sign In</h1>
+          <h1 className="text-2xl text-center font-bold mb-7">Sign In</h1>
 
           <form
             id="sign_in"
@@ -45,10 +45,10 @@ export default function Step0 () {
           </form>
         </div>
 
-        <div className="flex flex-col gap-20 items-center">
+        <div className="flex flex-col gap-16 items-center">
           <ButtonSubmit />
 
-          <div className="uppercase flex flex-col text-center font-bold text-xs text-[#979797]">
+          <div className="uppercase flex flex-col text-center font-extrabold text-[11px] text-stone-400">
             <a href="#">can{'\''}t sign in?</a>
             <a href="#">Create account</a>
           </div>
