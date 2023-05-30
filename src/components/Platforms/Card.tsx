@@ -27,7 +27,7 @@ export default function Card ({
         border: `2px solid ${borderColor}`
       }}
     >
-      <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10">
+      <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 cursor-pointer">
 
       </div>
       <Icon
