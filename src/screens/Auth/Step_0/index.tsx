@@ -1,4 +1,5 @@
 import { Input } from 'components/form'
+import Platforms from 'components/Platforms'
 
 export default function Step0 () {
   return (
@@ -11,7 +12,7 @@ export default function Step0 () {
 
         <h1 className="text-2xl text-center font-semibold mb-7">Sign In</h1>
 
-        <form className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4 mb-4">
           <Input
             placeholder="Username"
             name="username"
@@ -23,6 +24,8 @@ export default function Step0 () {
             name="password"
           />
         </form>
+
+        <Platforms />
       </div>
 
       <div className="bg-yellow-500 w-full bg-stone-900"></div>
