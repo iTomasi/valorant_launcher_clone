@@ -1,15 +1,9 @@
 import { HiArrowRight } from 'react-icons/hi'
 
-interface Props {
-  className?: string
-}
-
-export default function ButtonSubmit ({
-  className = ''
-}: Props) {
+export default function ButtonSubmit () {
   return (
     <button
-      className={`w-16 h-16 rounded-2xl border-2 border-stone-300 grid place-items-center ${className}`}
+      className="w-16 h-16 rounded-2xl border-2 border-stone-300 grid place-items-center"
       form="sign_in"
     >
       <HiArrowRight

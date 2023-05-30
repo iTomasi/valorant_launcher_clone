@@ -1,4 +1,4 @@
-import { Input } from 'components/form'
+import { Input, CheckBox } from 'components/form'
 import Platforms from 'components/Platforms'
 import ButtonSubmit from './ButtonSubmit'
 
@@ -24,22 +24,25 @@ export default function Step0 () {
 
           <form
             id="sign_in"
-            className="flex flex-col gap-4 mb-8"
             onSubmit={handleSubmit}
           >
-            <Input
-              placeholder="Username"
-              name="username"
-            />
+            <div className="flex flex-col gap-4 mb-8">
+              <Input
+                placeholder="Username"
+                name="username"
+              />
 
-            <Input
-              type="password"
-              placeholder="Password"
-              name="password"
-            />
+              <Input
+                type="password"
+                placeholder="Password"
+                name="password"
+              />
+            </div>
+
+            <Platforms />
+
+            <CheckBox className="mt-4" name="stay_signed">Stay signed in</CheckBox>
           </form>
-
-          <Platforms />
         </div>
 
         <div className="flex flex-col gap-20 items-center">
