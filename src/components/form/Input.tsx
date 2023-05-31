@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import React, { useState, useRef, forwardRef } from 'react'
 import { HiEye, HiEyeSlash } from 'react-icons/hi2'
 import { BsExclamationDiamondFill } from 'react-icons/bs'
 
@@ -6,23 +6,31 @@ interface Props {
   type?: 'text' | 'password'
   placeholder: string
   name: string
+  onBlur?: React.FocusEventHandler<HTMLInputElement>
+  onChange?: React.ChangeEventHandler<HTMLInputElement>
   errorMessage?: string
 }
 
 const iconClassName = 'w-5 h-5'
 
-export default function Input ({
+function Input ({
   type = 'text',
   placeholder,
   name,
+  onBlur,
+  onChange,
   errorMessage
-}: Props) {
+}: Props, ref: any) {
   const hasError = typeof errorMessage === 'string' && errorMessage !== ''
-  const inputRef = useRef<HTMLInputElement>(null)
+  const inputRef = useRef<HTMLInputElement | null>(null)
   const [isFocus, setIsFocus] = useState<boolean>(false)
   const [showPassword, setShowPassword] = useState<boolean>(false)
 
   const handleToggleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    if (e.type === 'blur' && typeof onBlur === 'function') {
+      onBlur(e)
+    }
+
     const { value } = e.target
 
     if (value !== '') {
@@ -44,12 +52,19 @@ export default function Input ({
     <div>
       <label className={`block transition-all rounded relative flex ring-2  ${hasError ? 'ring-[#E6B7EB] bg-[rgba(190,41,204,0.1)]' : 'bg-[#EDEDED] hover:bg-gray-200 focus-within:bg-white focus-within:hover:bg-white ring-transparent focus-within:ring-black'}`}>
         <input
-          ref={inputRef}
+          ref={($input) => {
+            inputRef.current = $input
+
+            if (typeof ref === 'function') {
+              ref($input)
+            }
+          }}
           className="peer pt-5 pb-2 px-2 bg-transparent focus:outline-none w-full font-semibold"
           type={showPassword ? 'text' : type}
           name={name}
           onFocus={handleToggleFocus}
           onBlur={handleToggleFocus}
+          onChange={onChange}
           autoComplete="off"
         />
 
@@ -87,3 +102,5 @@ export default function Input ({
     </div>
   )
 }
+
+export default forwardRef(Input)

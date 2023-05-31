@@ -1,14 +1,18 @@
 import { Input, CheckBox } from 'components/form'
 import Platforms from 'components/Platforms'
 import ButtonSubmit from './ButtonSubmit'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { zodSignIn } from 'utils/zod'
 
 export default function Step0 () {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const { register, handleSubmit, formState: { errors, isValid } } = useForm({
+    resolver: zodResolver(zodSignIn),
+    mode: 'onTouched'
+  })
 
-    const data = Object.fromEntries(new FormData(e.currentTarget))
-
-    console.log(data)
+  const handleOnSubmit = (values: any) => {
+    console.log({ values })
   }
 
   return (
@@ -24,18 +28,20 @@ export default function Step0 () {
 
           <form
             id="sign_in"
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(handleOnSubmit)}
           >
             <div className="flex flex-col gap-4 mb-8">
               <Input
                 placeholder="Username"
-                name="username"
+                {...register('username')}
+                errorMessage={errors.username?.message as string}
               />
 
               <Input
                 type="password"
                 placeholder="Password"
-                name="password"
+                {...register('password')}
+                errorMessage={errors.password?.message as string}
               />
             </div>
 
@@ -46,7 +52,7 @@ export default function Step0 () {
         </div>
 
         <div className="flex flex-col gap-16 items-center">
-          <ButtonSubmit />
+          <ButtonSubmit isValid={isValid} />
 
           <div className="uppercase flex flex-col text-center font-extrabold text-[11px] text-stone-400">
             <a href="#">can{'\''}t sign in?</a>
