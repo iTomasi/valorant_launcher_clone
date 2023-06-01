@@ -6,7 +6,13 @@ import { zodSignIn } from 'utils/zod'
 import Loading from './Loading'
 import wait from 'utils/wait'
 
-export default function Step0 () {
+interface Props {
+  setStep: (value: number | ((prev: number) => number)) => void
+}
+
+export default function Step0 ({
+  setStep
+}: Props) {
   const { register, handleSubmit, formState: { errors, isValid, isSubmitting } } = useForm({
     resolver: zodResolver(zodSignIn),
     mode: 'onTouched'
@@ -15,11 +21,12 @@ export default function Step0 () {
   const handleOnSubmit = async (values: any) => {
     await wait(2000)
     console.log({ values })
+    setStep(1)
   }
 
   return (
-    <div className="bg-white h-full flex">
-      <div className="min-w-[400px] max-w-[400px] py-12 px-12 text-black flex flex-col justify-between relative">
+    <div className="h-full flex">
+      <div className="min-w-[400px] max-w-[400px] p-12 flex flex-col justify-between relative">
         <Top
           onSubmit={handleSubmit(handleOnSubmit)}
           errors={errors}
