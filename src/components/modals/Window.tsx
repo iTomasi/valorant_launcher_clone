@@ -19,8 +19,8 @@ export default function Window ({
         backgroundPosition: 'center'
       }}
     >
-      <div className="w-full max-h-screen overflow-y-scroll">
-        <div className={`w-full max-w-screen-xl mx-auto h-[760px] bg-white text-black ${className}`}>
+      <div className="w-full max-h-screen overflow-y-auto">
+        <div className={`w-full max-w-screen-xl mx-auto h-[760px] overflow-y-auto bg-white text-black ${className}`}>
           {children}
         </div>
       </div>
