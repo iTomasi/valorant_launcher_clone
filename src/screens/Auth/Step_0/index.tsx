@@ -3,15 +3,17 @@ import Top from './Top'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { zodSignIn } from 'utils/zod'
-// import Loading from './Loading'
+import Loading from './Loading'
+import wait from 'utils/wait'
 
 export default function Step0 () {
-  const { register, handleSubmit, formState: { errors, isValid } } = useForm({
+  const { register, handleSubmit, formState: { errors, isValid, isSubmitting } } = useForm({
     resolver: zodResolver(zodSignIn),
     mode: 'onTouched'
   })
 
-  const handleOnSubmit = (values: any) => {
+  const handleOnSubmit = async (values: any) => {
+    await wait(2000)
     console.log({ values })
   }
 
@@ -33,7 +35,11 @@ export default function Step0 () {
           </div>
         </div>
 
-        {/* <Loading /> */}
+        {
+          isSubmitting && (
+            <Loading />
+          )
+        }
       </div>
 
       <div
