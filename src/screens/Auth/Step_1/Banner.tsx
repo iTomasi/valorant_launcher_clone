@@ -1,3 +1,5 @@
+import News from './News'
+
 export default function Banner () {
   return (
     <div className="h-[85%] relative">
@@ -11,6 +13,8 @@ export default function Banner () {
         className="absolute top-4 w-48 left-1/2 -translate-x-1/2"
         src="/valorant_text.png"
       />
+
+      <News className="absolute right-20 bottom-[-3.25rem]" />
     </div>
   )
 }
