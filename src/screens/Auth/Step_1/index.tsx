@@ -1,4 +1,5 @@
 import Banner from './Banner'
+import ButtonPlay from './ButtonPlay'
 
 export default function Step1 () {
   return (
@@ -6,8 +7,8 @@ export default function Step1 () {
       <div className="h-[760px] mb-8">
         <Banner />
 
-        <div className="h-[15%] bg-stone-800">
-          asdasd
+        <div className="h-[15%] bg-stone-800 flex items-center px-20">
+          <ButtonPlay />
         </div>
       </div>
 
