@@ -10,11 +10,16 @@ const steps = {
 
 export default function Auth () {
   const [step, setStep] = useState<number>(0)
+  const [showHeader, setShowHeader] = useState<boolean>(false)
 
   const Step = steps[step as keyof typeof steps] ?? steps[0]
 
-  const handleOnScroll = () => {
-    console.log('scrollete')
+  const handleOnScroll = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { scrollTop } = e.currentTarget
+
+    if (scrollTop < 760) {
+      if (showHeader) setShowHeader(false)
+    } else if (!showHeader) setShowHeader(true)
   }
 
   return (
@@ -22,7 +27,7 @@ export default function Auth () {
       background="url('/auth_bg.jpg')"
       onScroll={handleOnScroll}
     >
-      <Step setStep={setStep} />
+      <Step setStep={setStep} showHeader={showHeader} />
     </ModalWindow>
   )
 }
