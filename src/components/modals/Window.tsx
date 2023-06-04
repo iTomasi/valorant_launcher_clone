@@ -1,3 +1,5 @@
+import styles from './window.module.css'
+
 interface Props {
   className?: string
   background: string
@@ -22,7 +24,7 @@ export default function Window ({
       }}
     >
       <div className="w-full max-h-screen overflow-y-auto">
-        <div className={`w-full max-w-screen-xl mx-auto h-[760px] overflow-y-auto bg-white text-black ${className}`} onScroll={onScroll}>
+        <div className={`w-full max-w-screen-xl mx-auto h-[760px] overflow-y-auto bg-white text-black ${styles.content} ${className}`} onScroll={onScroll}>
           {children}
         </div>
       </div>
