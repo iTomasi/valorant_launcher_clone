@@ -2,12 +2,14 @@ interface Props {
   className?: string
   background: string
   children: React.ReactNode
+  onScroll: React.MouseEventHandler<HTMLDivElement>
 }
 
 export default function Window ({
   className = '',
   background,
-  children
+  children,
+  onScroll
 }: Props) {
   return (
     <div
@@ -20,7 +22,7 @@ export default function Window ({
       }}
     >
       <div className="w-full max-h-screen overflow-y-auto">
-        <div className={`w-full max-w-screen-xl mx-auto h-[760px] overflow-y-auto bg-white text-black ${className}`}>
+        <div className={`w-full max-w-screen-xl mx-auto h-[760px] overflow-y-auto bg-white text-black ${className}`} onScroll={onScroll}>
           {children}
         </div>
       </div>

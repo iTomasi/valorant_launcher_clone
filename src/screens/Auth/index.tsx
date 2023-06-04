@@ -13,9 +13,14 @@ export default function Auth () {
 
   const Step = steps[step as keyof typeof steps] ?? steps[0]
 
+  const handleOnScroll = () => {
+    console.log('scrollete')
+  }
+
   return (
     <ModalWindow
       background="url('/auth_bg.jpg')"
+      onScroll={handleOnScroll}
     >
       <Step setStep={setStep} />
     </ModalWindow>
